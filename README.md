@@ -21,7 +21,6 @@ Swiggy is a personal project that replicates the popular food delivery applicati
 
 - **React:** The project is built using React, a popular JavaScript library for building user interfaces.
 
-- **Parcel:** Parcel is used as the bundler, simplifying the setup and build process of the application.
 
 - **Tailwind CSS:** Tailwind CSS is employed for styling the app, allowing for efficient and customizable styling using utility classes.
 

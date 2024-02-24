@@ -12,7 +12,6 @@ import Cart from './components/Cart'
 import ErrorPage from './components/ErrorPage'
 import RestaurantDetails from './components/RestaurantDetails'
 import FoodCategoryPage from './components/FoodCategoryPage'
-
 import { Provider } from 'react-redux'
 import appStore from './store/appStore'
 import LandingPage from './components/LandingPage'
