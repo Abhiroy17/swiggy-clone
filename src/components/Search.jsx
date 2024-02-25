@@ -14,8 +14,9 @@ const Search = () => {
 
         setLoading(true);
         setSuggestions([]);
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/restaurants/search/suggest?lat=26.4498954&lng=74.6399163&str=${searchQuery}&trackingId=null`,OPTIONS);
-        console.log(res.text());
+        const encodedURI = encodeURIComponent(`https://www.swiggy.com/dapi/restaurants/search/suggest?lat=26.4498954&lng=74.6399163&str=${searchQuery}&trackingId=null`)
+        const res = await fetch(`${CORS_PROXY_URL}${encodedURI}`,OPTIONS);
+        
         const {data} = await res.json();
 
         const suggestions = data?.suggestions;
@@ -52,8 +53,8 @@ const Search = () => {
             </div>
             <div className="mt-[20px] max-w-[800px] mx-auto">
                 { loading && <SearchShimmer />}
-                {suggestions?.length > 0 && suggestions?.map((suggestion) => (
-                    <button key={suggestion?.cloudinayId} className="my-1 block rounded-sm w-full">
+                {suggestions?.length > 0 && suggestions?.map((suggestion,index) => (
+                    <button key={suggestion?.cloudinaryId+suggestion?.text+index} className="my-1 block rounded-sm w-full">
                         <div className="flex py-2 hover:bg-[#f2f6fc]">
                             <div className="w-16 mr-5">
                                 <img src={CDN_IMG_URL + suggestion?.cloudinaryId} className="p-0 rounded-md" alt="res-img" />
