@@ -7,13 +7,14 @@ import useOnlineStatus from '../hooks/useOnlineStatus';
 import Banner from './Banner';
 import FoodCategories from './FoodCategories';
 import { CORS_PROXY_URL } from '../utils/constants';
+import { OPTIONS } from '../utils/constants';
 
 const Home = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [sortedRestaurants, setSortedRestaurants] = useState([]);
     const [sortType, setSortType] = useState('default');
     const onlineStatus = useOnlineStatus(); 
-    const { lat, lng, address } = JSON.parse(localStorage.getItem("swgy_userLocation"));
+    let { lat, lng, address } = JSON.parse(localStorage.getItem("swgy_userLocation"));
     const city = address?.split(",")[0];
 
     // HOC
@@ -25,8 +26,14 @@ const Home = () => {
 
     const fetchData = async () => {
         try {
-            const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`)
-            const {data} = await res.json()
+            
+            lat = encodeURIComponent(lat);
+            lng = encodeURIComponent(lng);
+            const encodedURI = encodeURIComponent(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`);
+            const res = await fetch(`${CORS_PROXY_URL}${encodedURI}`,OPTIONS)
+            
+            const {data} = await res.json();
+            
 
             const [restGridObj] = data?.cards?.filter(({ card: { card } }) => card?.id === "top_brands_for_you")
             

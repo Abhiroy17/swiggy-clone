@@ -2,3 +2,5 @@
 /coverage
 /dist
 /.parcel-cache
+# Local Netlify folder
+.netlify

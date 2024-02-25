@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Footer from "./Footer";
 import { CORS_PROXY_URL } from "../utils/constants";
+import { OPTIONS } from "../utils/constants";
 
 const LandingPage = () => {
     const [locations, setLocations] = useState([]);
@@ -12,7 +13,7 @@ const LandingPage = () => {
             return;
 
         setLocations([]);
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/place-autocomplete?input=${searchQuery}&types=`)
+        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/place-autocomplete?input=${searchQuery}&types=`,OPTIONS)
         const {data} = await res.json();
 
         setLocations(data);
@@ -35,7 +36,7 @@ const LandingPage = () => {
     const handleFetchLatLong = async (placeId) => {
         setLoading(true);
 
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/address-recommend?place_id=${placeId}`);
+        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/address-recommend?place_id=${placeId}`,OPTIONS);
         const {data} = await res.json();
 
         if(data?.length > 0) {

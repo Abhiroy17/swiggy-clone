@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { CDN_IMG_URL, CORS_PROXY_URL } from '../utils/constants';
 import SearchShimmer from './SearchShimmer';
+import { OPTIONS } from '../utils/constants';
 
 const Search = () => {
     const [suggestions, setSuggestions] = useState([]);
@@ -13,7 +14,8 @@ const Search = () => {
 
         setLoading(true);
         setSuggestions([]);
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/restaurants/search/suggest?lat=26.4498954&lng=74.6399163&str=${searchQuery}&trackingId=null`)
+        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/restaurants/search/suggest?lat=26.4498954&lng=74.6399163&str=${searchQuery}&trackingId=null`,OPTIONS);
+        console.log(res.text());
         const {data} = await res.json();
 
         const suggestions = data?.suggestions;

@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { MdOutlineMyLocation } from "react-icons/md";
 import { useMatch } from 'react-router-dom';
 import { CORS_PROXY_URL } from '../utils/constants';
+import { OPTIONS } from '../utils/constants';
 
 const Sidebar = ({show, onClose}) => {
     const [locations, setLocations] = useState([]);
@@ -30,7 +31,7 @@ const Sidebar = ({show, onClose}) => {
 
         setShowCancel(true);
         setLocations([]);
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/place-autocomplete?input=${searchQuery}&types=`)
+        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/place-autocomplete?input=${searchQuery}&types=`,OPTIONS)
         const {data} = await res.json();
 
         setLocations(data);
@@ -53,7 +54,7 @@ const Sidebar = ({show, onClose}) => {
     const handleFetchLatLong = async (placeId) => {
         setLoading(true);
 
-        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/address-recommend?place_id=${placeId}`);
+        const res = await fetch(`${CORS_PROXY_URL}https://www.swiggy.com/dapi/misc/address-recommend?place_id=${placeId}`,OPTIONS);
         const {data} = await res.json();
 
         if(data?.length > 0) {
@@ -85,7 +86,7 @@ const Sidebar = ({show, onClose}) => {
 
             try {
                 const response = await fetch(
-                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`,OPTIONS
                 );
                 const { place_id, address: { city, state, country } } = await response.json();
                 
