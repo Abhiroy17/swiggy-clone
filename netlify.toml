@@ -1,5 +1,5 @@
 [[redirects]]
   force= true
-  from = "/swiggy-clone-food.netlify.app/*"
+  from = "thingproxy.freeboard.io/fetch/*"
   status = 200
-  to = "/https://thingproxy.freeboard.io/fetch/swiggy-clone-food.netlify.app"
+  to = "https://swiggy-clone-food.netlify.app/https://thingproxy.freeboard.io/fetch/https://swiggy-clone-food.netlify.app"
