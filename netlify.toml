@@ -3,7 +3,3 @@
   from = "thingproxy.freeboard.io/fetch/*"
   status = 200
   to = "https://swiggy-clone-food.netlify.app/https://thingproxy.freeboard.io/fetch/https://swiggy-clone-food.netlify.app"
-[[headers]]
-  for = "/*" 
-  [headers.values]
-    access-control-allow-origin: *
