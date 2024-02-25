@@ -1,8 +1,10 @@
 // Importing necessary types from '@netlify/edge-functions'
+// Import the necessary function from '@netlify/functions'
 const { createResponse } = require('@netlify/functions');
 
+
 // Defining the Edge function handler
-exports.handler = async (event) => {
+export async function handler(event) {
   // Extracting request and context from the event object
   const { request, context } = event;
 
@@ -15,10 +17,9 @@ exports.handler = async (event) => {
       'access-control-allow-origin': '*'
     }
   });
-};
+}
 
-// Exporting configuration for the Edge function
-exports.config = {
+export const config = {
   // Path for the function
   path: '/*'
 };
