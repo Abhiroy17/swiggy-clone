@@ -36,9 +36,7 @@ const Footer = () => {
                     <SiSwiggy size={30} />
                     <span className="ml-3 text-lg font-semibold">Swiggy Clone @2023</span>
                 </div>
-                <div className="text-white">Made with Passion By 
-                    <a href="https://www.linkedin.com/in/chahatbhatia18/" className="text-[#fc8019]" target="_blank"> Chahat</a>
-                </div>
+                
             </div>
         </div>
     )

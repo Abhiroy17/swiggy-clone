@@ -17,7 +17,6 @@ import appStore from './store/appStore'
 import LandingPage from './components/LandingPage'
 import Footer from './components/Footer'
 
-
 const Grocery = lazy(() => import('./components/Grocery'));
 
 
