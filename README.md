@@ -1,6 +1,6 @@
 # Swiggy - A Swiggy Clone Web App 
 
-Swiggy is a personal project that replicates the popular food delivery application Swiggy. This web app is built using React, Parcel as the bundler, Tailwind CSS for styling, Redux Toolkit for state management, and Jest for testing. 
+Swiggy is a personal project that replicates the popular food delivery application Swiggy. This web app is built using React, Vite as the bundler, Tailwind CSS for styling, Redux Toolkit for state management, and Jest for testing. 
 
 <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Swiggy_logo.svg" alt="Swiggy Image" width="600">
 
